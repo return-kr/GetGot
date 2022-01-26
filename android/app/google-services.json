@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "837090081320",
+    "firebase_url": "https://cowealth-bwu-default-rtdb.firebaseio.com",
+    "project_id": "cowealth-bwu",
+    "storage_bucket": "cowealth-bwu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837090081320:android:c3db467b298a154689d31d",
+        "android_client_info": {
+          "package_name": "com.compiler.cowealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837090081320-hil8c7v5ofopme3r7ul8bcut4orgjge5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.compiler.cowealth",
+            "certificate_hash": "6d39a9e1899916fb1d9fe126ea75ed97f5752f49"
+          }
+        },
+        {
+          "client_id": "837090081320-7eokvmj98sr7esf5p03lggeeho0954om.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBN7U_dX8lfkcesKHWTHelGG43vd9oAxjE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837090081320-7eokvmj98sr7esf5p03lggeeho0954om.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
