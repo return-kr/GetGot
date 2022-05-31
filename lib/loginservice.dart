@@ -126,7 +126,7 @@ class LoginService extends StatelessWidget {
                   height: 10.0,
                 ),
                 Image.asset(
-                  'images/logo.jpeg',
+                  'images/logo.png',
                   height: 200,
                 ),
               ],

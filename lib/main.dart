@@ -1,6 +1,8 @@
+import 'package:cowealth/custom_widgets/regular_text.dart';
 import 'package:cowealth/loginservice.dart';
 import 'package:cowealth/loginuser.dart';
 import 'package:cowealth/register.dart';
+import 'package:cowealth/strings/strings.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Co-wealth',
+      title: Strings.app_name,
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
@@ -77,8 +79,9 @@ class MainScreen extends StatelessWidget {
                   AnimatedTextKit(
                     animatedTexts: [
                       TypewriterAnimatedText(
-                        'Welcome to Co-wealth',
+                        'Welcome to ${Strings.app_name}',
                         textStyle: const TextStyle(
+                          fontFamily: 'LatoBlack',
                           fontSize: 32.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -90,7 +93,7 @@ class MainScreen extends StatelessWidget {
                   SizedBox(
                     height: 30.0,
                   ),
-                  Image.asset('images/logo.jpeg'),
+                  Image.asset('images/logo.png'),
                   SizedBox(
                     height: 20.0,
                   ),
@@ -102,7 +105,7 @@ class MainScreen extends StatelessWidget {
                       ),
                     },
                     icon: Icon(Icons.supervised_user_circle),
-                    label: Text('Login as normal user'),
+                    label: RegularText(Strings.user_login),
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(Colors.lightBlue),
@@ -116,15 +119,13 @@ class MainScreen extends StatelessWidget {
                       ),
                     },
                     icon: Icon(Icons.admin_panel_settings_outlined),
-                    label: Text('Login as service provider'),
+                    label: RegularText(Strings.seller_login),
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.orange),
+                      backgroundColor: MaterialStateProperty.all(
+                          Color.fromARGB(255, 224, 168, 0)),
                     ),
                   ),
-                  Text(
-                    '--or--',
-                    style: TextStyle(color: Colors.black87),
-                  ),
+                  RegularText(Strings.or),
                   ElevatedButton.icon(
                     onPressed: () => {
                       Navigator.push(
@@ -133,7 +134,7 @@ class MainScreen extends StatelessWidget {
                       ),
                     },
                     icon: Icon(Icons.app_registration_rounded),
-                    label: Text('Register'),
+                    label: RegularText(Strings.register),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.green),
                     ),

@@ -1,4 +1,7 @@
+import 'package:cowealth/custom_widgets/logo.dart';
+import 'package:cowealth/custom_widgets/regular_text.dart';
 import 'package:cowealth/forgot.dart';
+import 'package:cowealth/strings/strings.dart';
 import 'package:cowealth/user/dashuser.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -14,25 +17,33 @@ class LoginUser extends StatelessWidget {
     String mail = _mailController.text.toString().trim();
     String pass = _passController.text.toString().trim();
     if (mail.isEmpty || pass.isEmpty) {
-      _key.currentState!.showSnackBar(new SnackBar(content: new Text('All fields must be filled')));
+      _key.currentState!.showSnackBar(
+          new SnackBar(content: new Text('All fields must be filled')));
       return;
     }
     try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(email: mail, password: pass);
-      _key.currentState!.showSnackBar(new SnackBar(content: new Text('Login successful')));
+      UserCredential userCredential =
+          await _auth.signInWithEmailAndPassword(email: mail, password: pass);
+      _key.currentState!
+          .showSnackBar(new SnackBar(content: new Text('Login successful')));
       String email = userCredential.user!.email.toString();
-      await Future.delayed(const Duration(seconds: 2), (){});
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DashUser(umail : email)));
+      await Future.delayed(const Duration(seconds: 2), () {});
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => DashUser(umail: email)));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        _key.currentState!.showSnackBar(new SnackBar(content: new Text('No user found')));
+        _key.currentState!
+            .showSnackBar(new SnackBar(content: new Text('No user found')));
       } else if (e.code == 'wrong-password') {
-        _key.currentState!.showSnackBar(new SnackBar(content: new Text('Invalid credentials')));
+        _key.currentState!.showSnackBar(
+            new SnackBar(content: new Text('Invalid credentials')));
       } else {
-        _key.currentState!.showSnackBar(new SnackBar(content: new Text('Something went wrong')));
+        _key.currentState!.showSnackBar(
+            new SnackBar(content: new Text('Something went wrong')));
       }
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +61,7 @@ class LoginUser extends StatelessWidget {
                     TypewriterAnimatedText(
                       'User login',
                       textStyle: const TextStyle(
+                        fontFamily: 'LatoBlack',
                         fontSize: 32.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -100,16 +112,13 @@ class LoginUser extends StatelessWidget {
                 ElevatedButton.icon(
                   onPressed: () => login(context),
                   icon: Icon(Icons.login),
-                  label: Text('Tap to login'),
+                  label: RegularText(Strings.tap_to_login),
                   style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all(Colors.lightBlue),
                   ),
                 ),
-                Text(
-                  '--or--',
-                  style: TextStyle(color: Colors.black87),
-                ),
+                RegularText(Strings.or),
                 ElevatedButton.icon(
                   onPressed: () => {
                     Navigator.pushReplacement(
@@ -118,7 +127,7 @@ class LoginUser extends StatelessWidget {
                     ),
                   },
                   icon: Icon(Icons.password),
-                  label: Text('Forgot password'),
+                  label: RegularText(Strings.forgot_password),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.red),
                   ),
@@ -126,10 +135,7 @@ class LoginUser extends StatelessWidget {
                 SizedBox(
                   height: 10.0,
                 ),
-                Image.asset(
-                  'images/logo.jpeg',
-                  height: 200,
-                ),
+                AppLogo(),
               ],
             ),
           ),

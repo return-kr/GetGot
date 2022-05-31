@@ -78,7 +78,7 @@ class _DashUserState extends State<DashUser> {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                child: Image.asset('images/logo.jpeg'),
+                child: Image.asset('images/logo.png'),
               ),
               ListTile(
                 leading: Icon(Icons.home_filled),
@@ -179,7 +179,7 @@ class _DashUserState extends State<DashUser> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset('images/logo.jpeg'),
+              Image.asset('images/logo.png'),
               AnimatedTextKit(
                 animatedTexts: [
                   TypewriterAnimatedText(

@@ -113,7 +113,7 @@ class _ServicesState extends State<Services> {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                child: Image.asset('images/logo.jpeg'),
+                child: Image.asset('images/logo.png'),
               ),
               ListTile(
                 leading: Icon(Icons.home_filled),
