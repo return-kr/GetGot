@@ -1,6 +1,6 @@
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
 
@@ -18,7 +18,12 @@ class _UserServiceViewState extends State<UserServiceView> {
   _UserServiceViewState({this.chosenValue, this.pin});
 
   void call(String number) async {
-    var res = await FlutterPhoneDirectCaller.callNumber(number);
+    final Uri url = Uri(scheme: 'tel', path: number);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   @override
@@ -27,7 +32,7 @@ class _UserServiceViewState extends State<UserServiceView> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'All Services',
+          'Services',
           style: TextStyle(color: Colors.black87),
         ),
         backgroundColor: Colors.white,
