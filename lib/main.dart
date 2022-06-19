@@ -7,6 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'firebase_options.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -17,7 +18,7 @@ void main() async {
         Brightness.dark, //navigation bar icons' color
   ));
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MyApp());
 }
 
@@ -94,7 +95,10 @@ class MainScreen extends StatelessWidget {
                   SizedBox(
                     height: 30.0,
                   ),
-                  Image.asset(Strings.logo_image_path),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Image.asset(Strings.logo_image_path),
+                  ),
                   SizedBox(
                     height: 20.0,
                   ),

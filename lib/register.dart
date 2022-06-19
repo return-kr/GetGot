@@ -1,7 +1,6 @@
 import 'package:cowealth/strings/strings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'main.dart';
 
 class Registration extends StatelessWidget {
@@ -19,30 +18,41 @@ class Registration extends StatelessWidget {
     String phone = _phoneController.text.toString().trim();
     String pass = _passController.text.toString().trim();
     String cpass = _cpassController.text.toString().trim();
-    if (name.isEmpty || mail.isEmpty || phone.isEmpty || pass.isEmpty || cpass.isEmpty) {
-      _key.currentState!.showSnackBar(new SnackBar(content: new Text('All fields must be filled')));
+    if (name.isEmpty ||
+        mail.isEmpty ||
+        phone.isEmpty ||
+        pass.isEmpty ||
+        cpass.isEmpty) {
+      _key.currentState!.showSnackBar(
+          new SnackBar(content: new Text('All fields must be filled')));
       return;
     }
     if (pass != cpass) {
-      _key.currentState!.showSnackBar(new SnackBar(content: new Text('Password didn\'t match')));
+      _key.currentState!.showSnackBar(
+          new SnackBar(content: new Text('Password didn\'t match')));
       return;
     }
     try {
-      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
-          email: mail,
-          password: pass
+      UserCredential userCredential = await _auth
+          .createUserWithEmailAndPassword(email: mail, password: pass);
+      _key.currentState!.showSnackBar(
+          new SnackBar(content: new Text('Registration successful')));
+      await Future.delayed(const Duration(seconds: 2), () {});
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => MainScreen()),
       );
-      _key.currentState!.showSnackBar(new SnackBar(content: new Text('Registration successful')));
-      await Future.delayed(const Duration(seconds: 2), (){});
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()),);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        _key.currentState!.showSnackBar(new SnackBar(content: new Text('Choose strong password')));
+        _key.currentState!.showSnackBar(
+            new SnackBar(content: new Text('Choose strong password')));
       } else if (e.code == 'email-already-in-use') {
-        _key.currentState!.showSnackBar(new SnackBar(content: new Text('Account already exists')));
+        _key.currentState!.showSnackBar(
+            new SnackBar(content: new Text('Account already exists')));
       }
     } catch (e) {
-      _key.currentState!.showSnackBar(new SnackBar(content: new Text(e.toString())));
+      _key.currentState!
+          .showSnackBar(new SnackBar(content: new Text(e.toString())));
     }
   }
 
@@ -50,6 +60,15 @@ class Registration extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _key,
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'Registration',
+          style: TextStyle(color: Colors.black87),
+        ),
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: Colors.black87),
+      ),
       body: Align(
         child: SafeArea(
           child: SingleChildScrollView(
@@ -57,19 +76,6 @@ class Registration extends StatelessWidget {
               children: [
                 SizedBox(
                   height: 10.0,
-                ),
-                AnimatedTextKit(
-                  animatedTexts: [
-                    TypewriterAnimatedText(
-                      'Registration',
-                      textStyle: const TextStyle(
-                        fontSize: 32.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      speed: const Duration(milliseconds: 100),
-                    ),
-                  ],
-                  isRepeatingAnimation: false,
                 ),
                 SizedBox(
                   height: 30.0,

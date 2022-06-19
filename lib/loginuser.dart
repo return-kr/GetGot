@@ -48,6 +48,15 @@ class LoginUser extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _key,
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'User Login',
+          style: TextStyle(color: Colors.black87),
+        ),
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: Colors.black87),
+      ),
       body: Align(
         child: SafeArea(
           child: SingleChildScrollView(
@@ -55,20 +64,6 @@ class LoginUser extends StatelessWidget {
               children: [
                 SizedBox(
                   height: 10.0,
-                ),
-                AnimatedTextKit(
-                  animatedTexts: [
-                    TypewriterAnimatedText(
-                      'User login',
-                      textStyle: const TextStyle(
-                        fontFamily: 'LatoBlack',
-                        fontSize: 32.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      speed: const Duration(milliseconds: 100),
-                    ),
-                  ],
-                  isRepeatingAnimation: false,
                 ),
                 SizedBox(
                   height: 30.0,

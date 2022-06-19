@@ -15,29 +15,48 @@ class LoginService extends StatelessWidget {
     String mail = _mailController.text.toString().trim();
     String pass = _passController.text.toString().trim();
     if (mail.isEmpty || pass.isEmpty) {
-      _key.currentState!.showSnackBar(new SnackBar(content: new Text('All fields must be filled')));
+      _key.currentState!.showSnackBar(
+          new SnackBar(content: new Text('All fields must be filled')));
       return;
     }
     try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(email: mail, password: pass);
-      _key.currentState!.showSnackBar(new SnackBar(content: new Text('Login successful')));
+      UserCredential userCredential =
+          await _auth.signInWithEmailAndPassword(email: mail, password: pass);
+      _key.currentState!
+          .showSnackBar(new SnackBar(content: new Text('Login successful')));
       String email = userCredential.user!.email.toString();
-      await Future.delayed(const Duration(seconds: 2), (){});
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DashService(umail : email)),);
+      await Future.delayed(const Duration(seconds: 2), () {});
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => DashService(umail: email)),
+      );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        _key.currentState!.showSnackBar(new SnackBar(content: new Text('No user found')));
+        _key.currentState!
+            .showSnackBar(new SnackBar(content: new Text('No user found')));
       } else if (e.code == 'wrong-password') {
-        _key.currentState!.showSnackBar(new SnackBar(content: new Text('Invalid credentials')));
+        _key.currentState!.showSnackBar(
+            new SnackBar(content: new Text('Invalid credentials')));
       } else {
-        _key.currentState!.showSnackBar(new SnackBar(content: new Text('Something went wrong')));
+        _key.currentState!.showSnackBar(
+            new SnackBar(content: new Text('Something went wrong')));
       }
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _key,
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'Provider Login',
+          style: TextStyle(color: Colors.black87),
+        ),
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: Colors.black87),
+      ),
       body: Align(
         child: SafeArea(
           child: SingleChildScrollView(
@@ -45,19 +64,6 @@ class LoginService extends StatelessWidget {
               children: [
                 SizedBox(
                   height: 10.0,
-                ),
-                AnimatedTextKit(
-                  animatedTexts: [
-                    TypewriterAnimatedText(
-                      'Provider login',
-                      textStyle: const TextStyle(
-                        fontSize: 32.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      speed: const Duration(milliseconds: 100),
-                    ),
-                  ],
-                  isRepeatingAnimation: false,
                 ),
                 SizedBox(
                   height: 30.0,

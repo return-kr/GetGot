@@ -49,7 +49,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "images/launcher.jpeg"
+  image_path: "images/logo.jpg"
 flutter:
 
   # The following line ensures that the Material Icons font is
