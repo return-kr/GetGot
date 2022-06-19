@@ -236,6 +236,10 @@ class _UserServiceState extends State<UserService> {
                   'Home Delivery',
                   'Medical Support',
                   'Transport',
+                  'TO-LET',
+                  'Rental/PG',
+                  'Room Service',
+                  'Emergency Services',
                   'Others'
                 ].map((String value) {
                   return new DropdownMenuItem<String>(
