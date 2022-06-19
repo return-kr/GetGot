@@ -50,7 +50,7 @@ class _ServiceViewState extends State<ServiceView> {
             AnimatedTextKit(
               animatedTexts: [
                 TypewriterAnimatedText(
-                  'Your Service List:',
+                  'Your service list:',
                   textStyle: const TextStyle(
                     fontSize: 28.0,
                     fontWeight: FontWeight.bold,
@@ -131,7 +131,7 @@ class _ServiceViewState extends State<ServiceView> {
                 } else if (snapshot.hasError) {
                   return Text('Error!');
                 } else {
-                  return Text('Something went wrong');
+                  return Text('');
                 }
               },
             ),

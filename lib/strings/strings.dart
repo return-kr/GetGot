@@ -14,4 +14,7 @@ class Strings {
   static const String share_your_feedback = "Share your feedback";
   static const String caution_feedback = "!!Using abusive word or phrases and any personal attack is strictly prohibited. If found, proper steps will be taken!!.";
   static const String role_bhaskar = "UI/UX designer, Control flow creator";
+  static const String feedback = "Feedback";
+  static const String welcome_as_provider = 'As a service provider you can post any service which to want to serve people on your nearby area.\nFeel free to post any kind of service. Make sure your contact credentials are valid.\nLet\'s share and get reach';
+  static const String post_guidelines = '1. Kindly use gentle words while describing the service.\n2. DON\'T share invalid information or contact detail.\n3. All information should be valid and fare.\n4. No advertisement posts.\n5. No promotional posts';
 }

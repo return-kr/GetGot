@@ -155,7 +155,7 @@ class _ServicesState extends State<Services> {
                 AnimatedTextKit(
                   animatedTexts: [
                     TypewriterAnimatedText(
-                      'Post Your Service',
+                      'Post your service',
                       textStyle: const TextStyle(
                         fontSize: 32.0,
                         fontWeight: FontWeight.bold,
@@ -164,6 +164,9 @@ class _ServicesState extends State<Services> {
                     ),
                   ],
                   isRepeatingAnimation: false,
+                ),
+                SizedBox(
+                  height: 10.0,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -221,6 +224,10 @@ class _ServicesState extends State<Services> {
                     'Home Delivery',
                     'Medical Support',
                     'Transport',
+                    'TO-LET',
+                    'Rental/PG',
+                    'Room Service',
+                    'Emergency Services',
                     'Others'
                   ].map((String value) {
                     return new DropdownMenuItem<String>(

@@ -49,7 +49,7 @@ class LoginService extends StatelessWidget {
                 AnimatedTextKit(
                   animatedTexts: [
                     TypewriterAnimatedText(
-                      'Service login',
+                      'Provider login',
                       textStyle: const TextStyle(
                         fontSize: 32.0,
                         fontWeight: FontWeight.bold,

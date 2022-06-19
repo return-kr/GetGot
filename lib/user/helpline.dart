@@ -4,11 +4,9 @@ import 'package:cowealth/user/motivation.dart';
 import 'package:cowealth/user/tracker.dart';
 import 'package:cowealth/user/usercontact.dart';
 import 'package:cowealth/user/userservice.dart';
-import 'package:cowealth/user/vaccine.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/services.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 import '../main.dart';
@@ -176,22 +174,8 @@ class HelpLine extends StatelessWidget {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.add_circle_rounded),
-                title: Text('Vaccine'),
-                onTap: () => {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Vaccine(
-                        umail: umail.toString(),
-                      ),
-                    ),
-                  ),
-                },
-              ),
-              ListTile(
                 leading: Icon(Icons.accessibility_new_outlined),
-                title: Text('Motivation'),
+                title: Text(Strings.feedback),
                 onTap: () => {
                   Navigator.pushReplacement(
                     context,
@@ -274,7 +258,7 @@ class HelpLine extends StatelessWidget {
               AnimatedTextKit(
                 animatedTexts: [
                   TypewriterAnimatedText(
-                    'COVID-19 Helpline Numbers',
+                    'Customer care numbers',
                     textStyle: const TextStyle(
                       fontSize: 28.0,
                       fontWeight: FontWeight.bold,

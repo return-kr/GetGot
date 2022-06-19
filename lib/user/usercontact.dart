@@ -3,7 +3,6 @@ import 'package:cowealth/user/helpline.dart';
 import 'package:cowealth/user/motivation.dart';
 import 'package:cowealth/user/tracker.dart';
 import 'package:cowealth/user/userservice.dart';
-import 'package:cowealth/user/vaccine.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/services.dart';
@@ -95,22 +94,8 @@ class UserContact extends StatelessWidget {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.add_circle_rounded),
-                title: Text('Vaccine'),
-                onTap: () => {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Vaccine(
-                        umail: umail.toString(),
-                      ),
-                    ),
-                  ),
-                },
-              ),
-              ListTile(
                 leading: Icon(Icons.accessibility_new_outlined),
-                title: Text('Motivation'),
+                title: Text(Strings.feedback),
                 onTap: () => {
                   Navigator.pushReplacement(
                     context,
@@ -277,15 +262,6 @@ class UserContact extends StatelessWidget {
                   ],
                   isRepeatingAnimation: false,
                 ),
-                // IconButton(
-                //   color: Colors.blue,
-                //   iconSize: 50.0,
-                //   onPressed: () {
-                //     final String url = "https://www.facebook.com/KukiCrab/";
-                //     bhaskarCall(url);
-                //   },
-                //   icon: Icon(Icons.facebook_outlined),
-                // ),
               ],
             ),
           ),

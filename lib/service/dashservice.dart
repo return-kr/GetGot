@@ -102,11 +102,17 @@ class DashService extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
+              SizedBox(
+                height: 5.0,
+              ),
               Image.asset(Strings.logo_image_path),
+              SizedBox(
+                height: 12.0,
+              ),
               AnimatedTextKit(
                 animatedTexts: [
                   TypewriterAnimatedText(
-                    'Welcome As Service Provider',
+                    'Welcome as provider',
                     textStyle: const TextStyle(
                       fontSize: 28.0,
                       fontWeight: FontWeight.bold,
@@ -120,9 +126,14 @@ class DashService extends StatelessWidget {
                 padding: EdgeInsets.only(
                     left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
                 child: Container(
-                  color: Colors.amber,
+                  padding: EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.all(Radius.circular(20),
+                    ),
+                  ),
                   child: Text(
-                    'As a service provider you can post any service which to want to serve people on this pandemic situation.\nFeel free to post any kind of service. Make sure your contact credentials are valid.\nLet\'s fight together against COVID-19',
+                    Strings.welcome_as_provider,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -130,7 +141,7 @@ class DashService extends StatelessWidget {
               AnimatedTextKit(
                 animatedTexts: [
                   TypewriterAnimatedText(
-                    'Post Guidelines',
+                    'Post guidelines',
                     textStyle: const TextStyle(
                       fontSize: 28.0,
                       fontWeight: FontWeight.bold,
@@ -144,9 +155,14 @@ class DashService extends StatelessWidget {
                 padding: EdgeInsets.only(
                     left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
                 child: Container(
-                  color: Colors.amber,
+                  padding: EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.all(Radius.circular(20),
+                    ),
+                  ),
                   child: Text(
-                    '1. Kindly use gentle words while describing the service.\n2. DON\'T share invalid information or contact detail.\n3. All information should be valid and fare.\n4. No advertisement posts.\n5. No promotional posts',
+                    Strings.post_guidelines,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),

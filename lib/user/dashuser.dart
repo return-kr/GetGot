@@ -3,7 +3,6 @@ import 'package:cowealth/user/motivation.dart';
 import 'package:cowealth/user/tracker.dart';
 import 'package:cowealth/user/usercontact.dart';
 import 'package:cowealth/user/userservice.dart';
-import 'package:cowealth/user/vaccine.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/services.dart';
@@ -93,22 +92,8 @@ class _DashUserState extends State<DashUser> {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.add_circle_rounded),
-                title: Text('Vaccine'),
-                onTap: () => {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Vaccine(
-                        umail: mail.toString(),
-                      ),
-                    ),
-                  ),
-                },
-              ),
-              ListTile(
                 leading: Icon(Icons.accessibility_new_outlined),
-                title: Text('Motivation'),
+                title: Text(Strings.feedback),
                 onTap: () => {
                   Navigator.pushReplacement(
                     context,
@@ -180,7 +165,13 @@ class _DashUserState extends State<DashUser> {
         body: SingleChildScrollView(
           child: Column(
             children: [
+              SizedBox(
+                height: 5.0,
+              ),
               Image.asset(Strings.logo_image_path),
+              SizedBox(
+                height: 12.0,
+              ),
               AnimatedTextKit(
                 animatedTexts: [
                   TypewriterAnimatedText(
@@ -198,7 +189,12 @@ class _DashUserState extends State<DashUser> {
                 padding: EdgeInsets.only(
                     left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
                 child: Container(
-                  color: Colors.amber,
+                  padding: EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.all(Radius.circular(20),
+                    ),
+                  ),
                   child: Text(
                     Strings.about_neighbours,
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -222,7 +218,12 @@ class _DashUserState extends State<DashUser> {
                 padding: EdgeInsets.only(
                     left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
                 child: Container(
-                  color: Colors.amber,
+                  padding: EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.all(Radius.circular(20),
+                    ),
+                  ),
                   child: Text(
                     Strings.how_it_works,
                     style: TextStyle(fontWeight: FontWeight.bold),

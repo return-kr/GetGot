@@ -35,7 +35,7 @@ class _TrackerState extends State<Tracker> {
       await showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Do you want to exit?'),
+          title: Text('Do you want to exit the tracker?'),
           actions: [
             new FlatButton(
               onPressed: () {

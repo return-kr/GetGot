@@ -3,7 +3,6 @@ import 'package:cowealth/user/storyview.dart';
 import 'package:cowealth/user/tracker.dart';
 import 'package:cowealth/user/usercontact.dart';
 import 'package:cowealth/user/userservice.dart';
-import 'package:cowealth/user/vaccine.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/services.dart';
@@ -80,7 +79,7 @@ class _MotivationState extends State<Motivation> {
         appBar: AppBar(
           centerTitle: true,
           title: const Text(
-            'Motivation',
+            Strings.feedback,
             style: TextStyle(color: Colors.black87),
           ),
           backgroundColor: Colors.white,
@@ -121,22 +120,8 @@ class _MotivationState extends State<Motivation> {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.add_circle_rounded),
-                title: Text('Vaccine'),
-                onTap: () => {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Vaccine(
-                        umail: mail,
-                      ),
-                    ),
-                  ),
-                },
-              ),
-              ListTile(
                 leading: Icon(Icons.accessibility_new_outlined),
-                title: Text('Motivation'),
+                title: Text(Strings.feedback),
                 onTap: () => {
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
