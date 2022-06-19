@@ -79,10 +79,11 @@ class MainScreen extends StatelessWidget {
                   AnimatedTextKit(
                     animatedTexts: [
                       TypewriterAnimatedText(
-                        'Welcome to ${Strings.app_name}',
+                        '${Strings.app_name}',
                         textStyle: const TextStyle(
                           fontFamily: 'LatoBlack',
-                          fontSize: 32.0,
+                          fontSize: 40.0,
+                          color: Colors.green,
                           fontWeight: FontWeight.bold,
                         ),
                         speed: const Duration(milliseconds: 100),
@@ -93,7 +94,7 @@ class MainScreen extends StatelessWidget {
                   SizedBox(
                     height: 30.0,
                   ),
-                  Image.asset('images/logo.png'),
+                  Image.asset(Strings.logo_image_path),
                   SizedBox(
                     height: 20.0,
                   ),

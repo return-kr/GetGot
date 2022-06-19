@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
+import '../strings/strings.dart';
 
 class UserContact extends StatelessWidget {
   final umail;
@@ -77,7 +78,7 @@ class UserContact extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                child: Image.asset('images/logo.png'),
+                child: Image.asset(Strings.logo_image_path),
               ),
               ListTile(
                 leading: Icon(Icons.home_filled),
@@ -87,7 +88,7 @@ class UserContact extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => DashUser(
-                        umail: umail.toString(),
+                        userMail: umail.toString(),
                       ),
                     ),
                   ),
@@ -226,7 +227,7 @@ class UserContact extends StatelessWidget {
                 AnimatedTextKit(
                   animatedTexts: [
                     TypewriterAnimatedText(
-                      'Mobile Application Developer, Database Designer',
+                      Strings.role_bhaskar,
                       textStyle: const TextStyle(
                         fontSize: 15.0,
                       ),

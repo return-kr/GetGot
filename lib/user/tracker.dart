@@ -62,7 +62,7 @@ class _TrackerState extends State<Tracker> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => DashUser(umail: mail),
+            builder: (context) => DashUser(userMail: mail),
           ),
         );
       return goBack;
@@ -124,7 +124,7 @@ class _TrackerState extends State<Tracker> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => DashUser(
-                                    umail: mail,
+                                    userMail: mail,
                                   )),
                         );
                       }

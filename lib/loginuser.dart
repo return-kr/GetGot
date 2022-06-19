@@ -29,7 +29,7 @@ class LoginUser extends StatelessWidget {
       String email = userCredential.user!.email.toString();
       await Future.delayed(const Duration(seconds: 2), () {});
       Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => DashUser(umail: email)));
+          MaterialPageRoute(builder: (context) => DashUser(userMail: email)));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         _key.currentState!

@@ -1,3 +1,4 @@
+import 'package:cowealth/strings/strings.dart';
 import 'package:cowealth/user/dashuser.dart';
 import 'package:cowealth/user/motivation.dart';
 import 'package:cowealth/user/tracker.dart';
@@ -158,7 +159,7 @@ class HelpLine extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                child: Image.asset('images/logo.png'),
+                child: Image.asset(Strings.logo_image_path),
               ),
               ListTile(
                 leading: Icon(Icons.home_filled),
@@ -168,7 +169,7 @@ class HelpLine extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => DashUser(
-                        umail: umail.toString(),
+                        userMail: umail.toString(),
                       ),
                     ),
                   ),

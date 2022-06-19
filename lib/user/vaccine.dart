@@ -10,6 +10,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/services.dart';
 
 import '../main.dart';
+import '../strings/strings.dart';
 
 class Vaccine extends StatelessWidget {
   final String umail;
@@ -73,7 +74,7 @@ class Vaccine extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                child: Image.asset('images/logo.png'),
+                child: Image.asset(Strings.logo_image_path),
               ),
               ListTile(
                 leading: Icon(Icons.home_filled),
@@ -83,7 +84,7 @@ class Vaccine extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => DashUser(
-                        umail: umail,
+                        userMail: umail,
                       ),
                     ),
                   ),
@@ -182,7 +183,7 @@ class Vaccine extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset('images/logo.png'),
+              Image.asset(Strings.logo_image_path),
               AnimatedTextKit(
                 animatedTexts: [
                   TypewriterAnimatedText(

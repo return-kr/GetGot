@@ -51,7 +51,7 @@ class _StoryViewState extends State<StoryView> {
             AnimatedTextKit(
               animatedTexts: [
                 TypewriterAnimatedText(
-                  'Your story list',
+                  'Your feedbacks:',
                   textStyle: const TextStyle(
                     fontSize: 28.0,
                     fontWeight: FontWeight.bold,

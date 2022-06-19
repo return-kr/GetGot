@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/services.dart';
 import '../main.dart';
+import '../strings/strings.dart';
 import 'dashuser.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -103,7 +104,7 @@ class _MotivationState extends State<Motivation> {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                child: Image.asset('images/logo.png'),
+                child: Image.asset(Strings.logo_image_path),
               ),
               ListTile(
                 leading: Icon(Icons.home_filled),
@@ -113,7 +114,7 @@ class _MotivationState extends State<Motivation> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => DashUser(
-                        umail: mail,
+                        userMail: mail,
                       ),
                     ),
                   ),
@@ -217,7 +218,7 @@ class _MotivationState extends State<Motivation> {
             AnimatedTextKit(
               animatedTexts: [
                 TypewriterAnimatedText(
-                  'Share Your Thoughts or Stories',
+                  Strings.share_your_feedback,
                   textStyle: const TextStyle(
                     fontSize: 28.0,
                     fontWeight: FontWeight.bold,
@@ -238,7 +239,7 @@ class _MotivationState extends State<Motivation> {
                   maxLines: 8,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    hintText: '!!Sharing MEDICINE INFORMATION and PRESCRIPTION is strictly prohibited!!',
+                    hintText: Strings.caution_feedback,
                     border: OutlineInputBorder(),
                   ),
                 ),
@@ -271,7 +272,7 @@ class _MotivationState extends State<Motivation> {
             AnimatedTextKit(
               animatedTexts: [
                 TypewriterAnimatedText(
-                  'Story Feed:',
+                  'All feedbacks:',
                   textStyle: const TextStyle(
                     fontSize: 28.0,
                     fontWeight: FontWeight.bold,

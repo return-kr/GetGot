@@ -1,5 +1,6 @@
 import 'package:cowealth/forgot.dart';
 import 'package:cowealth/service/dashservice.dart';
+import 'package:cowealth/strings/strings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -126,7 +127,7 @@ class LoginService extends StatelessWidget {
                   height: 10.0,
                 ),
                 Image.asset(
-                  'images/logo.png',
+                  Strings.logo_image_path,
                   height: 200,
                 ),
               ],

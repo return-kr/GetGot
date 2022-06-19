@@ -3,6 +3,7 @@ import 'package:cowealth/service/serviceview.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/services.dart';
+import '../strings/strings.dart';
 import 'dashservice.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -113,7 +114,7 @@ class _ServicesState extends State<Services> {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                child: Image.asset('images/logo.png'),
+                child: Image.asset(Strings.logo_image_path),
               ),
               ListTile(
                 leading: Icon(Icons.home_filled),

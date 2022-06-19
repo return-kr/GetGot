@@ -4,6 +4,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/services.dart';
 
 import '../main.dart';
+import '../strings/strings.dart';
 
 class DashService extends StatelessWidget {
   final String umail;
@@ -67,7 +68,7 @@ class DashService extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                child: Image.asset('images/logo.png'),
+                child: Image.asset(Strings.logo_image_path),
               ),
               ListTile(
                 leading: Icon(Icons.home_filled),
@@ -101,7 +102,7 @@ class DashService extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset('images/logo.png'),
+              Image.asset(Strings.logo_image_path),
               AnimatedTextKit(
                 animatedTexts: [
                   TypewriterAnimatedText(

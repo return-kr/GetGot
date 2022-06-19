@@ -1,3 +1,4 @@
+import 'package:cowealth/strings/strings.dart';
 import 'package:cowealth/user/dashuser.dart';
 import 'package:cowealth/user/helpline.dart';
 import 'package:cowealth/user/motivation.dart';
@@ -101,7 +102,7 @@ class _UserServiceState extends State<UserService> {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                child: Image.asset('images/logo.png'),
+                child: Image.asset(Strings.logo_image_path),
               ),
               ListTile(
                 leading: Icon(Icons.home_filled),
@@ -111,7 +112,7 @@ class _UserServiceState extends State<UserService> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => DashUser(
-                        umail: mail,
+                        userMail: mail,
                       ),
                     ),
                   ),
@@ -216,7 +217,7 @@ class _UserServiceState extends State<UserService> {
               AnimatedTextKit(
                 animatedTexts: [
                   TypewriterAnimatedText(
-                    'All Services',
+                    'Area PIN',
                     textStyle: const TextStyle(
                       fontSize: 28.0,
                       fontWeight: FontWeight.bold,
@@ -277,7 +278,7 @@ class _UserServiceState extends State<UserService> {
               AnimatedTextKit(
                 animatedTexts: [
                   TypewriterAnimatedText(
-                    'All Service List:',
+                    'Services:',
                     textStyle: const TextStyle(
                       fontSize: 28.0,
                       fontWeight: FontWeight.bold,

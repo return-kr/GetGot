@@ -8,13 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/services.dart';
 import '../main.dart';
+import '../strings/strings.dart';
 
 // ignore: must_be_immutable
 class DashUser extends StatefulWidget {
-  final String umail;
-  DashUser({required this.umail});
+  final String userMail;
+  DashUser({required this.userMail});
   @override
-  _DashUserState createState() => _DashUserState(mail: umail);
+  _DashUserState createState() => _DashUserState(mail: userMail);
 }
 
 class _DashUserState extends State<DashUser> {
@@ -78,7 +79,7 @@ class _DashUserState extends State<DashUser> {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                child: Image.asset('images/logo.png'),
+                child: Image.asset(Strings.logo_image_path),
               ),
               ListTile(
                 leading: Icon(Icons.home_filled),
@@ -86,7 +87,7 @@ class _DashUserState extends State<DashUser> {
                 onTap: () => {
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
-                        builder: (context) => DashUser(umail: mail),
+                        builder: (context) => DashUser(userMail: mail),
                       ),
                       (route) => false),
                 },
@@ -179,11 +180,11 @@ class _DashUserState extends State<DashUser> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset('images/logo.png'),
+              Image.asset(Strings.logo_image_path),
               AnimatedTextKit(
                 animatedTexts: [
                   TypewriterAnimatedText(
-                    'About COVID-19',
+                    'About Neighbours',
                     textStyle: const TextStyle(
                       fontSize: 28.0,
                       fontWeight: FontWeight.bold,
@@ -199,7 +200,7 @@ class _DashUserState extends State<DashUser> {
                 child: Container(
                   color: Colors.amber,
                   child: Text(
-                    'Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.\nMost people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment.',
+                    Strings.about_neighbours,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -207,7 +208,7 @@ class _DashUserState extends State<DashUser> {
               AnimatedTextKit(
                 animatedTexts: [
                   TypewriterAnimatedText(
-                    'How It Spreads',
+                    'How It Works',
                     textStyle: const TextStyle(
                       fontSize: 28.0,
                       fontWeight: FontWeight.bold,
@@ -223,31 +224,7 @@ class _DashUserState extends State<DashUser> {
                 child: Container(
                   color: Colors.amber,
                   child: Text(
-                    'The virus that causes COVID-19 is mainly transmitted through droplets generated when an infected person coughs, sneezes, or exhales. These droplets are too heavy to hang in the air, and quickly fall on floors or surfaces.\nYou can be infected by breathing in the virus if you are within close proximity of someone who has COVID-19, or by touching a contaminated surface and then your eyes, nose or mouth.',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-              AnimatedTextKit(
-                animatedTexts: [
-                  TypewriterAnimatedText(
-                    'Preventions Of COVID-19',
-                    textStyle: const TextStyle(
-                      fontSize: 28.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    speed: const Duration(milliseconds: 100),
-                  ),
-                ],
-                isRepeatingAnimation: false,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
-                child: Container(
-                  color: Colors.amber,
-                  child: Text(
-                    'Clean your hands often. Use soap and water, or an alcohol-based hand rub.\n\nMaintain a safe distance from anyone who is coughing or sneezing.\n\nWear a mask when physical distancing is not possible.\n\nDon’t touch your eyes, nose or mouth.\n\nCover your nose and mouth with your bent elbow or a tissue when you cough or sneeze.\n\nStay home if you feel unwell.\n\nIf you have a fever, cough and difficulty breathing, seek medical attention.',
+                    Strings.how_it_works,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
