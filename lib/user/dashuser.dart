@@ -168,7 +168,10 @@ class _DashUserState extends State<DashUser> {
               SizedBox(
                 height: 5.0,
               ),
-              Image.asset(Strings.logo_image_path),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Image.asset(Strings.logo_image_path),
+              ),
               SizedBox(
                 height: 12.0,
               ),

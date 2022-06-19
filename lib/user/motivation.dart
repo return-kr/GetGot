@@ -1,18 +1,20 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cowealth/user/helpline.dart';
 import 'package:cowealth/user/storyview.dart';
 import 'package:cowealth/user/tracker.dart';
 import 'package:cowealth/user/usercontact.dart';
 import 'package:cowealth/user/userservice.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/services.dart';
+
 import '../main.dart';
 import '../strings/strings.dart';
 import 'dashuser.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Motivation extends StatefulWidget {
   final String umail;
+
   Motivation({required this.umail});
 
   @override
@@ -22,6 +24,7 @@ class Motivation extends StatefulWidget {
 class _MotivationState extends State<Motivation> {
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
   final String mail;
+
   _MotivationState({required this.mail});
 
   TextEditingController _postController = TextEditingController();
@@ -36,9 +39,13 @@ class _MotivationState extends State<Motivation> {
       FirebaseFirestore.instance
           .collection('allmotivs')
           .add({'story': content, 'name': mail});
-      _key.currentState!
-          .showSnackBar(new SnackBar(content: new Text('Posted successfully')));
-      print('post complete');
+      _key.currentState!.showSnackBar(
+        new SnackBar(
+          content: new Text('Posted successfully'),
+          backgroundColor: Colors.blueGrey,
+        ),
+      );
+      _postController.clear();
     } catch (e) {
       print('exception' + e.toString());
     }
@@ -242,7 +249,8 @@ class _MotivationState extends State<Motivation> {
               onPressed: () => {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => StoryView(umail: mail)),
+                  MaterialPageRoute(
+                      builder: (context) => StoryView(umail: mail)),
                 ),
               },
               icon: Icon(Icons.all_inbox_sharp),
@@ -268,8 +276,9 @@ class _MotivationState extends State<Motivation> {
               isRepeatingAnimation: false,
             ),
             StreamBuilder<QuerySnapshot>(
-              stream:
-                  FirebaseFirestore.instance.collection('allmotivs').snapshots(),
+              stream: FirebaseFirestore.instance
+                  .collection('allmotivs')
+                  .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   final List<DocumentSnapshot> documents = snapshot.data!.docs;

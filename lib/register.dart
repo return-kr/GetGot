@@ -1,6 +1,7 @@
 import 'package:cowealth/strings/strings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'main.dart';
 
 class Registration extends StatelessWidget {
@@ -24,35 +25,66 @@ class Registration extends StatelessWidget {
         pass.isEmpty ||
         cpass.isEmpty) {
       _key.currentState!.showSnackBar(
-          new SnackBar(content: new Text('All fields must be filled')));
+        new SnackBar(
+          content: new Text('All fields must be filled'),
+          backgroundColor: Colors.blueGrey,
+        ),
+      );
       return;
     }
     if (pass != cpass) {
       _key.currentState!.showSnackBar(
-          new SnackBar(content: new Text('Password didn\'t match')));
+        new SnackBar(
+          content: new Text('Password didn\'t match'),
+          backgroundColor: Colors.blueGrey,
+        ),
+      );
       return;
     }
     try {
       UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: mail, password: pass);
       _key.currentState!.showSnackBar(
-          new SnackBar(content: new Text('Registration successful')));
+        new SnackBar(
+          content: new Text('Registration successful'),
+          backgroundColor: Colors.blueGrey,
+        ),
+      );
       await Future.delayed(const Duration(seconds: 2), () {});
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => MainScreen()),
       );
+      _nameController.clear();
+      _mailController.clear();
+      _phoneController.clear();
+      _passController.clear();
+      _cpassController.clear();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         _key.currentState!.showSnackBar(
-            new SnackBar(content: new Text('Choose strong password')));
+          new SnackBar(
+            content: new Text('Choose strong password'),
+            backgroundColor: Colors.blueGrey,
+          ),
+        );
       } else if (e.code == 'email-already-in-use') {
         _key.currentState!.showSnackBar(
-            new SnackBar(content: new Text('Account already exists')));
+          new SnackBar(
+            content: new Text('Account already exists'),
+            backgroundColor: Colors.blueGrey,
+          ),
+        );
       }
     } catch (e) {
-      _key.currentState!
-          .showSnackBar(new SnackBar(content: new Text(e.toString())));
+      _key.currentState!.showSnackBar(
+        new SnackBar(
+          content: new Text(
+            e.toString(),
+          ),
+          backgroundColor: Colors.blueGrey,
+        ),
+      );
     }
   }
 

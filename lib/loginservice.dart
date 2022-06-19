@@ -16,14 +16,17 @@ class LoginService extends StatelessWidget {
     String pass = _passController.text.toString().trim();
     if (mail.isEmpty || pass.isEmpty) {
       _key.currentState!.showSnackBar(
-          new SnackBar(content: new Text('All fields must be filled')));
+        new SnackBar(content: new Text('All fields must be filled'),
+          backgroundColor: Colors.blueGrey,),);
       return;
     }
     try {
       UserCredential userCredential =
-          await _auth.signInWithEmailAndPassword(email: mail, password: pass);
+      await _auth.signInWithEmailAndPassword(email: mail, password: pass);
       _key.currentState!
-          .showSnackBar(new SnackBar(content: new Text('Login successful')));
+          .showSnackBar(new SnackBar(
+        content: new Text('Login successful'),
+        backgroundColor: Colors.blueGrey,),);
       String email = userCredential.user!.email.toString();
       await Future.delayed(const Duration(seconds: 2), () {});
       Navigator.pushReplacement(
@@ -33,13 +36,19 @@ class LoginService extends StatelessWidget {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         _key.currentState!
-            .showSnackBar(new SnackBar(content: new Text('No user found')));
+            .showSnackBar(new SnackBar(
+          content: new Text('No user found'),
+          backgroundColor: Colors.blueGrey,),);
       } else if (e.code == 'wrong-password') {
         _key.currentState!.showSnackBar(
-            new SnackBar(content: new Text('Invalid credentials')));
+          new SnackBar(
+            content: new Text('Invalid credentials'),
+            backgroundColor: Colors.blueGrey,),);
       } else {
         _key.currentState!.showSnackBar(
-            new SnackBar(content: new Text('Something went wrong')));
+          new SnackBar(
+            content: new Text('Something went wrong'), backgroundColor: Colors
+            .blueGrey,),);
       }
     }
   }
@@ -117,7 +126,8 @@ class LoginService extends StatelessWidget {
                   style: TextStyle(color: Colors.black87),
                 ),
                 ElevatedButton.icon(
-                  onPressed: () => {
+                  onPressed: () =>
+                  {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => ForgotPassword()),

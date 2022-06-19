@@ -1,14 +1,15 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cowealth/main.dart';
 import 'package:cowealth/service/serviceview.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/services.dart';
 import '../strings/strings.dart';
 import 'dashservice.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Services extends StatefulWidget {
   final String umail;
+
   Services({required this.umail});
 
   @override
@@ -23,6 +24,7 @@ class _ServicesState extends State<Services> {
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
   late String _chosenValue = "Select Service Category";
   final String mail;
+
   _ServicesState({required this.mail});
 
   void post() async {
@@ -47,11 +49,25 @@ class _ServicesState extends State<Services> {
         'pin': pin,
         'content': content
       });
-      _key.currentState!
-          .showSnackBar(SnackBar(content: Text('Posted successfully')));
+      _key.currentState!.showSnackBar(
+        SnackBar(
+          content: Text('Posted successfully'),
+          backgroundColor: Colors.blueGrey,
+        ),
+      );
+      _nameController.clear();
+      _phoneController.clear();
+      _pinController.clear();
+      _contentController.clear();
     } catch (e) {
-      _key.currentState!
-          .showSnackBar(SnackBar(content: Text(e.toString().trim())));
+      _key.currentState!.showSnackBar(
+        SnackBar(
+          content: Text(
+            e.toString().trim(),
+          ),
+          backgroundColor: Colors.blueGrey,
+        ),
+      );
     }
   }
 

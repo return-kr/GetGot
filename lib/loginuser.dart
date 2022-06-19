@@ -3,9 +3,8 @@ import 'package:cowealth/custom_widgets/regular_text.dart';
 import 'package:cowealth/forgot.dart';
 import 'package:cowealth/strings/strings.dart';
 import 'package:cowealth/user/dashuser.dart';
-import 'package:flutter/material.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class LoginUser extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -18,28 +17,48 @@ class LoginUser extends StatelessWidget {
     String pass = _passController.text.toString().trim();
     if (mail.isEmpty || pass.isEmpty) {
       _key.currentState!.showSnackBar(
-          new SnackBar(content: new Text('All fields must be filled')));
+        new SnackBar(
+          content: new Text('All fields must be filled'),
+          backgroundColor: Colors.blueGrey,
+        ),
+      );
       return;
     }
     try {
       UserCredential userCredential =
           await _auth.signInWithEmailAndPassword(email: mail, password: pass);
-      _key.currentState!
-          .showSnackBar(new SnackBar(content: new Text('Login successful')));
+      _key.currentState!.showSnackBar(
+        new SnackBar(
+          content: new Text('Login successful'),
+          backgroundColor: Colors.blueGrey,
+        ),
+      );
       String email = userCredential.user!.email.toString();
       await Future.delayed(const Duration(seconds: 2), () {});
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (context) => DashUser(userMail: email)));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        _key.currentState!
-            .showSnackBar(new SnackBar(content: new Text('No user found')));
+        _key.currentState!.showSnackBar(
+          new SnackBar(
+            content: new Text('No user found'),
+            backgroundColor: Colors.blueGrey,
+          ),
+        );
       } else if (e.code == 'wrong-password') {
         _key.currentState!.showSnackBar(
-            new SnackBar(content: new Text('Invalid credentials')));
+          new SnackBar(
+            content: new Text('Invalid credentials'),
+            backgroundColor: Colors.blueGrey,
+          ),
+        );
       } else {
         _key.currentState!.showSnackBar(
-            new SnackBar(content: new Text('Something went wrong')));
+          new SnackBar(
+            content: new Text('Something went wrong'),
+            backgroundColor: Colors.blueGrey,
+          ),
+        );
       }
     }
   }

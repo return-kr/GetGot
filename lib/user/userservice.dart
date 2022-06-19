@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cowealth/strings/strings.dart';
 import 'package:cowealth/user/dashuser.dart';
 import 'package:cowealth/user/helpline.dart';
@@ -9,8 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import '../main.dart';
 
 class UserService extends StatefulWidget {
@@ -28,18 +29,33 @@ class _UserServiceState extends State<UserService> {
   late String _chosenValue = "Select Service Category";
   _UserServiceState({required this.mail});
 
-  void search() {
+  void _search() {
     String pin = _pinController.text.toString().trim();
+    if (_chosenValue == "Select Service Category" || pin.isEmpty) {
+      _key.currentState!.showSnackBar(
+        new SnackBar(
+          content: new Text('Both field should be chosen'),
+          backgroundColor: Colors.blueGrey,
+        ),
+      );
+      return;
+    }
     Navigator.push(
       context,
       MaterialPageRoute(
           builder: (context) =>
               UserServiceView(pin: pin, chosenValue: _chosenValue)),
     );
+    _pinController.clear();
   }
 
-  void call(String number) async {
-    var res = await FlutterPhoneDirectCaller.callNumber(number);
+  Future<void> call(String number) async {
+    final Uri url = Uri(scheme: 'tel', path: number);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   Future<bool> _willPopScope(context) async {
@@ -212,6 +228,9 @@ class _UserServiceState extends State<UserService> {
                 ],
                 isRepeatingAnimation: false,
               ),
+              SizedBox(
+                height: 10.0,
+              ),
               Padding(
                 padding: const EdgeInsets.only(
                     left: 20.0, right: 20.0, top: 5.0, bottom: 5.0),
@@ -257,17 +276,20 @@ class _UserServiceState extends State<UserService> {
                 height: 10.0,
               ),
               ElevatedButton.icon(
-                onPressed: () => search(),
+                onPressed: () => _search(),
                 icon: Icon(Icons.search_rounded),
                 label: Text('Search'),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.lightBlue),
                 ),
               ),
+              SizedBox(
+                height: 5.0,
+              ),
               AnimatedTextKit(
                 animatedTexts: [
                   TypewriterAnimatedText(
-                    'Services:',
+                    'All services:',
                     textStyle: const TextStyle(
                       fontSize: 28.0,
                       fontWeight: FontWeight.bold,
@@ -277,13 +299,17 @@ class _UserServiceState extends State<UserService> {
                 ],
                 isRepeatingAnimation: false,
               ),
+              SizedBox(
+                height: 10.0,
+              ),
               StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
                     .collection('allservices')
                     .snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    final List<DocumentSnapshot> documents = snapshot.data!.docs;
+                    final List<DocumentSnapshot> documents =
+                        snapshot.data!.docs;
                     return Expanded(
                       child: ListView(
                           physics: const AlwaysScrollableScrollPhysics(),
@@ -307,7 +333,8 @@ class _UserServiceState extends State<UserService> {
                                               MainAxisAlignment.end,
                                           children: [
                                             IconButton(
-                                              onPressed: () => call(doc['phone']),
+                                              onPressed: () =>
+                                                  call(doc['phone']),
                                               icon: Icon(
                                                 Icons.call,
                                                 color: Colors.blue,
