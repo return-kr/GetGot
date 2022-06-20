@@ -5,6 +5,7 @@ import 'package:cowealth/user/storyview.dart';
 import 'package:cowealth/user/tracker.dart';
 import 'package:cowealth/user/usercontact.dart';
 import 'package:cowealth/user/userservice.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -93,7 +94,8 @@ class _MotivationState extends State<Motivation> {
           iconTheme: IconThemeData(color: Colors.black87),
           actions: [
             IconButton(
-              onPressed: () {
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(

@@ -2,7 +2,9 @@ import 'package:cowealth/custom_widgets/regular_text.dart';
 import 'package:cowealth/loginservice.dart';
 import 'package:cowealth/loginuser.dart';
 import 'package:cowealth/register.dart';
+import 'package:cowealth/session_expired.dart';
 import 'package:cowealth/strings/strings.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,6 +24,14 @@ void main() async {
   runApp(MyApp());
 }
 
+_decideLandingPage() {
+  if (FirebaseAuth.instance.currentUser != null) {
+    return SessionExpired();
+  } else {
+    return MainScreen();
+  }
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -31,7 +41,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MainScreen(),
+      home: _decideLandingPage(),
     );
   }
 }

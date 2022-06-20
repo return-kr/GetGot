@@ -1,4 +1,5 @@
 import 'package:cowealth/user/dashuser.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:logger/logger.dart';
@@ -85,7 +86,8 @@ class _TrackerState extends State<Tracker> {
           iconTheme: IconThemeData(color: Colors.black87),
           actions: [
             IconButton(
-              onPressed: () {
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(

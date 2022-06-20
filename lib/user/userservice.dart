@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cowealth/strings/strings.dart';
 import 'package:cowealth/user/dashuser.dart';
 import 'package:cowealth/user/helpline.dart';
@@ -7,6 +5,7 @@ import 'package:cowealth/user/motivation.dart';
 import 'package:cowealth/user/tracker.dart';
 import 'package:cowealth/user/usercontact.dart';
 import 'package:cowealth/user/userserviceview.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -100,7 +99,8 @@ class _UserServiceState extends State<UserService> {
           iconTheme: IconThemeData(color: Colors.black87),
           actions: [
             IconButton(
-              onPressed: () {
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
@@ -352,7 +352,7 @@ class _UserServiceState extends State<UserService> {
                   } else if (snapshot.hasError) {
                     return Text('Error!');
                   } else {
-                    return Text('Something went wrong');
+                    return Text('');
                   }
                 },
               ),

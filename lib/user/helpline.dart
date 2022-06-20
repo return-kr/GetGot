@@ -4,6 +4,7 @@ import 'package:cowealth/user/motivation.dart';
 import 'package:cowealth/user/tracker.dart';
 import 'package:cowealth/user/usercontact.dart';
 import 'package:cowealth/user/userservice.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/services.dart';
@@ -52,50 +53,50 @@ class HelpLine extends StatelessWidget {
     'Puducherry'
   ];
   final List<String> stcontact = <String>[
-    '0866-2410978',
-    '9436055743',
-    '6913347770',
-    '104',
-    '077122-35091',
-    '104',
-    '104',
-    '8558893911',
-    '104',
-    '104',
-    '104',
-    '0471-2552056',
-    '0755-2527177',
-    '020-26127394',
-    '03852411668',
-    '108',
-    '102',
-    '7005539653',
-    '9439994859',
-    '104',
-    '0141-2225624',
-    '104',
-    '044-29510500',
-    '104',
-    '0381-2315879',
-    '104',
-    '18001805145',
-    '03323412600',
-    '03192-232102',
-    '9779558282',
-    '104',
-    '104',
-    '011-22307145',
-    '01912520982',
-    '01942440283',
-    '01982256462',
-    '104',
-    '104'
+    'tel:0866-2410978',
+    'tel:9436055743',
+    'tel:6913347770',
+    'tel:104',
+    'tel:077122-35091',
+    'tel:104',
+    'tel:104',
+    'tel:8558893911',
+    'tel:104',
+    'tel:104',
+    'tel:104',
+    'tel:0471-2552056',
+    'tel:0755-2527177',
+    'tel:020-26127394',
+    'tel:03852411668',
+    'tel:108',
+    'tel:102',
+    'tel:7005539653',
+    'tel:9439994859',
+    'tel:104',
+    'tel:0141-2225624',
+    'tel:104',
+    'tel:044-29510500',
+    'tel:104',
+    'tel:0381-2315879',
+    'tel:104',
+    'tel:18001805145',
+    'tel:03323412600',
+    'tel:03192-232102',
+    'tel:9779558282',
+    'tel:104',
+    'tel:104',
+    'tel:011-22307145',
+    'tel:01912520982',
+    'tel:01942440283',
+    'tel:01982256462',
+    'tel:104',
+    'tel:104'
   ];
   final String umail;
   HelpLine({required this.umail});
 
   void call(String number) async {
-    final Uri url = Uri(scheme: 'tel', path: number);
+    final Uri url = Uri(path: number);
     if (await canLaunchUrl(url)) {
       await launchUrl(url);
     } else {
@@ -144,7 +145,8 @@ class HelpLine extends StatelessWidget {
           iconTheme: IconThemeData(color: Colors.black87),
           actions: [
             IconButton(
-              onPressed: () {
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
